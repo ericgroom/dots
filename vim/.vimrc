@@ -1,8 +1,8 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
@@ -16,6 +16,7 @@ Plugin 'tpope/vim-surround'
 
 " The bundles you install will be listed here
 
+call vundle#end()
 filetype plugin indent on
 
 " The rest of your config follows here
