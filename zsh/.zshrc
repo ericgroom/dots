@@ -90,3 +90,7 @@ export PATH=$PATH:/home/eric/idea-IC-162.1628.40/bin
 export VIMRC=$PATH:/home/eric/.vimrc
 
 alias i3lock="i3lock-pixel"
+
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
