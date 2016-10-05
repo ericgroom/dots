@@ -1,0 +1,7 @@
+name: mopidy
+root: ~/
+attach: false
+windows:
+      - mopidy:
+          panes:
+            - mopidy
