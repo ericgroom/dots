@@ -88,8 +88,14 @@ export PATH=$PATH:/home/eric/bin
 export PATH=$PATH:/home/eric/Downloads/idea-IC-162.1628.40/bin
 export PATH=$PATH:/home/eric/idea-IC-162.1628.40/bin
 export VIMRC=$PATH:/home/eric/.vimrc
+export EDITOR="vim"
+export DISABLE_AUTO_TITLE=true # for tmux window titles
 
 alias i3lock="i3lock-pixel"
+alias tmux="tmux -2"
+alias ta="tmux attach"
+alias tl="tmux list-sessions"
+alias la="ls -a"
 
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
