@@ -17,4 +17,3 @@ windows:
           layout: 6b3d,188x53,0,0{94x53,0,0,2,93x53,95,0,8}  
           panes:
             - ncmpcpp
-            - alsamixer
