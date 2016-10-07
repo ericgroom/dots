@@ -14,6 +14,7 @@ windows:
             - clear
             - clear
       - music:
-          layout: be7e,188x53,0,0,1
+          layout: 6b3d,188x53,0,0{94x53,0,0,2,93x53,95,0,8}  
           panes:
             - ncmpcpp
+            - alsamixer
