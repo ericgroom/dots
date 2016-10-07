@@ -44,4 +44,7 @@ if filereadable(expand("~/.vimrc_background"))
     source ~/.vimrc_background
  endif
 
- 
+" bindings
+let mapleader = "\<Space>" 
+map <leader>f :NERDTree <CR>
+map <leader>w :w <CR>
