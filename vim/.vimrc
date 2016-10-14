@@ -12,6 +12,9 @@ Plugin 'tpope/vim-rails'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-surround'
 Plugin 'chriskempson/base16-vim'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-ragtag'
+Plugin 'junegunn/vim-easy-align'
 
 " The bundles you install will be listed here
 
@@ -25,12 +28,12 @@ set nu " changes the 0 from rnu to absolute line
 
 " adds kspell to complete which completes dictionary words
 " when spell check is enabled
-set complete=.,w,b,u,t,i,kspell 
+set complete=.,w,b,u,t,i
 
 " set tab length
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set expandtab
 
 " disable ex mode, feel free to remap later
@@ -48,3 +51,12 @@ if filereadable(expand("~/.vimrc_background"))
 let mapleader = "\<Space>" 
 map <leader>f :NERDTree <CR>
 map <leader>w :w <CR>
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+" Start LiveEasyAlign
+nmap <leader>a <Plug>(LiveEasyAlign)
