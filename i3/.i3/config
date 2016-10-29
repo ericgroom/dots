@@ -209,7 +209,7 @@ for_window [class="^.*"] border pixel 2
 smart_borders on
 
 # autostart
-exec_always --no-startup-id feh --bg-fill ~/Dropbox/wallpapers/ghostnebula.jpg
+exec_always --no-startup-id feh --bg-fill ~/Dropbox/wallpapers/half_dome.jpeg
 exec --no-startup-id dropbox start
 exec --no-startup-id nm-applet
 exec --no-startup-id compton --config ~/.config/compton.conf
