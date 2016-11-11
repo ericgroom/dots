@@ -11,7 +11,6 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-surround'
-Plugin 'chriskempson/base16-vim'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-ragtag'
 Plugin 'junegunn/vim-easy-align'
@@ -39,14 +38,6 @@ set expandtab
 " disable ex mode, feel free to remap later
 map Q <Nop>
 
-" colors
-colorscheme base16-ocean
-let base16colorspace=256
-if filereadable(expand("~/.vimrc_background"))
-    let base16colorspace=256
-    source ~/.vimrc_background
- endif
-
 " bindings
 let mapleader = "\<Space>" 
 map <leader>f :NERDTree <CR>
@@ -60,3 +51,6 @@ nmap ga <Plug>(EasyAlign)
 
 " Start LiveEasyAlign
 nmap <leader>a <Plug>(LiveEasyAlign)
+
+" color
+set t_Co=16
