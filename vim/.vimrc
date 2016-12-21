@@ -63,3 +63,6 @@ colorscheme base16-ocean
 
 " syntax 
 syntax on
+
+" color
+set t_Co=16
