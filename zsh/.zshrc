@@ -91,7 +91,6 @@ export VIMRC=$PATH:/home/eric/.vimrc
 export EDITOR="vim"
 export DISABLE_AUTO_TITLE=true # for tmux window titles
 
-alias i3lock="i3lock-pixel"
 alias tmux="tmux -2"
 alias ta="tmux attach"
 alias tl="tmux list-sessions"
