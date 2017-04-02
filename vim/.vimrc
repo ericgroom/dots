@@ -6,13 +6,13 @@ call vundle#begin()
 " let Vundle manage Vundle required!
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-rails'
-Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-ragtag'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'chriskempson/base16-vim'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'easymotion/vim-easymotion'
+" Plugin 'mattn/emmet-vim'
+
 
 " The bundles you install will be listed here
 
@@ -39,8 +39,12 @@ map Q <Nop>
 
 " bindings
 let mapleader = "\<Space>" 
-map <leader>f :NERDTree <CR>
-map <leader>w :w <CR>
+nmap <leader>f :NERDTree <CR>
+nmap <leader>w :w <CR>
+nmap <leader>W :wq <CR>
+nmap <leader>t :! python3 -m unittest discover .
+nmap <Leader>s :source $MYVIMRC
+nmap <leader>e :e $MYVIMRC
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -54,6 +58,9 @@ nmap <leader>a <Plug>(LiveEasyAlign)
 " RagTag
 let g:ragtag_global_maps = 1
 
+" color
+set t_Co=256
+
 " Color
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
@@ -64,5 +71,8 @@ colorscheme base16-ocean
 " syntax 
 syntax on
 
-" color
-set t_Co=16
+" only is case-sensitive if an uppercase letter is included
+set smartcase
+
+" macvim font
+set guifont=Monaco:h12
