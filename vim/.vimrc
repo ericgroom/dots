@@ -62,11 +62,11 @@ let g:ragtag_global_maps = 1
 set t_Co=256
 
 " Color
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
-colorscheme base16-ocean
+" if filereadable(expand("~/.vimrc_background"))
+"   let base16colorspace=256
+"   source ~/.vimrc_background
+" endif
+" colorscheme base16-ocean
 
 " syntax 
 syntax on
