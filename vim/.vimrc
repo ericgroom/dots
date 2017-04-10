@@ -11,7 +11,7 @@ Plugin 'junegunn/vim-easy-align'
 Plugin 'chriskempson/base16-vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'easymotion/vim-easymotion'
-" Plugin 'mattn/emmet-vim'
+Plugin 'mattn/emmet-vim'
 
 
 " The bundles you install will be listed here
