@@ -73,7 +73,7 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -83,21 +83,16 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias caffeine="xset -dpms"
+alias decaf="xset +dpms"
 
-export PATH=$PATH:/home/eric/bin
-export PATH=$PATH:/home/eric/Downloads/idea-IC-162.1628.40/bin
-export PATH=$PATH:/home/eric/idea-IC-162.1628.40/bin
-export VIMRC=$PATH:/home/eric/.vimrc
+# ccache 
+export PATH="/usr/lib/ccache/bin/:$PATH"
+
+# custom 
+export PATH="/home/eric/bin/:$PATH"
+
+
+# vim
 export EDITOR="vim"
-export DISABLE_AUTO_TITLE=true # for tmux window titles
 
-alias tmux="tmux -2"
-alias ta="tmux attach"
-alias tl="tmux list-sessions"
-alias la="ls -a"
-
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
