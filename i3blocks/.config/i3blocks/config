@@ -47,7 +47,7 @@ instance=Master
 #instance=PCM
 interval=2
 signal=10
-command=pulseaudio-ctl full-status | grep -o '[0-9][0-9]' | head -1
+command=pulseaudio-ctl full-status | grep -o '[0-9]*' | head -1
 
 # Memory usage
 #
