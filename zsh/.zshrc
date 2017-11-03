@@ -83,8 +83,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias caffeine="xset -dpms"
-alias decaf="xset +dpms"
 
 # ccache 
 export PATH="/usr/lib/ccache/bin/:$PATH"
@@ -96,3 +94,8 @@ export PATH="/home/eric/bin/:$PATH"
 # vim
 export EDITOR="vim"
 
+#wal
+#(wal -r &)
+
+# android studio fix
+export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1

@@ -31,11 +31,11 @@ set_from_resource $white       color15 #000000
 set_from_resource $darkblack   color0  #000000
 set_from_resource $black       color8  #000000
 
-set $text   #2a3022 
+set $text   #3c3956
 set $transparent #00000000
 
 #class			             border	 backgr	text	indicator child_border
-client.focused		       $black  $black	$text	$text     $green	
+client.focused		       $black  $black	$text	$text     $magenta	
 client.focused_inactive	 $black  $black	$text	$text     $black
 client.unfocused	       $black  $black	$text	$text     $black
 client.urgent		         $black  $black	$text	$text     $red
@@ -45,7 +45,7 @@ client.background	       $black
 bar {
     status_command i3blocks
     i3bar_command i3bar -t
-    tray_output none
+    #tray_output none
     modifier $mod
     strip_workspace_numbers yes
     position top
@@ -55,21 +55,24 @@ bar {
         statusline $text
 	      separator  $text
                            #border        background        text
-        focused_workspace  $transparent   $transparent      $green    
+        focused_workspace  $transparent   $transparent      $white    
 	      inactive_workspace $transparent   $transparent      $text 
 	      urgent_workspace   $transparent   $transparent      $red 
     }
 }
 
 # window borders
-for_window [class="^.*"] border pixel 4
+for_window [class="^.*"] border pixel 2
 
 # autostart
-exec_always --no-startup-id feh --bg-fill ~/walls/mounts.jpg
+exec_always --no-startup-id feh --bg-fill ~/walls/mystic-mountains-1920×1080.jpg
+exec --no-startup-id setxkbmap us -variant intl
+exec --no-startup-id nm-applet
 exec --no-startup-id dropbox start
-exec --no-startup-id compton --config ~/.config/compton.conf
+exec_always --no-startup-id compton --config ~/.config/compton.conf
 # exec --no-startup-id redshift
 exec --no-startup-id setxkbmap -option ctrl:nocaps
+exec --no-startup-id -- i3lock-fancy -n -i
 
 #assignments
 assign [class="Firefox"] $ws2
@@ -80,8 +83,8 @@ assign [class="jetbrains-pycharm-ce"] $ws3
 assign [class="spotify"] $ws10
 
 #gaps
-gaps inner 10
-gaps outer 20
+gaps inner 4
+gaps outer 4
 
 # key bindings
 bindsym $mod+Shift+x exec i3lock-fancy -p -f DejaVu-Sans -t Sssssss.
@@ -98,11 +101,15 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
+# Brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+
 set $left h
 set $down j
 set $up k
 set $right l
-set $mod Mod1
+set $mod Mod4
 
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -267,4 +274,15 @@ mode "$mode_gaps_outer" {
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
+}
+
+set $keyboard (u)s (i)ntl
+bindsym $mod+p mode "$keyboard"
+mode "$keyboard" {
+        bindsym i exec "setxkbmap us -variant intl"; mode "default"
+        bindsym u exec "setxkbmap us"; mode "default"
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+
 }

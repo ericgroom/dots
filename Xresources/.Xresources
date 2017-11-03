@@ -1,19 +1,19 @@
 ! Colors
 ! --------------------------------------------------------------------
-#define red     #c7ae95
-#define green   #95c7ae
-#define yellow  #aec795
-#define blue    #ae95c7
-#define magenta #c795ae
-#define cyan    #95aec7
-#define bg      #1c2023
-#define fg      #c7ccd1
+#define red     #fc7b66
+#define green   #92c08f
+#define yellow  #e2d28d
+#define blue    #8f90c0
+#define magenta #fcddd8
+#define cyan    #8fc0c0
+#define bg      #3c3956
+#define fg      #eeeeee
 
 
 ! Urxvt settings
 ! --------------------------------------------------------------------
 URxvt*scrollBar: false
-URxvt.font:      xft:DejaVu Sans Mono:size=14
+URxvt.font:      xft:DejaVu Sans Mono:size=12
 
 
 ! Urxvt colors

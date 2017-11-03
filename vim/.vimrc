@@ -10,6 +10,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'mattn/emmet-vim'
 Plugin 'rust-lang/rust.vim'
 Plugin 'posva/vim-vue'
+Plugin 'sheerun/vim-polyglot'
 
 call vundle#end()
 filetype plugin indent on
@@ -49,7 +50,9 @@ set guifont=Monaco:h12
 set incsearch 
 
 " show char when line wraps
-set showbreak=↪
+" set showbreak=↪
+" disable line wrap
+set nowrap
 
 " **************
 " BINDINGS
@@ -61,6 +64,8 @@ nmap <leader>W :wq <CR>
 nmap <leader>t :! python3 -m unittest discover .
 nmap <Leader>s :source $MYVIMRC <CR>
 nmap <leader>e :e $MYVIMRC <CR>
+nmap <leader>jc :!javac %<CR>
+nmap <leader>jj :!java %:r<CR>
 
 " **************
 " PLUGIN OPTIONS
