@@ -45,7 +45,7 @@ client.background	       $black
 bar {
     status_command i3blocks
     i3bar_command i3bar -t
-    tray_output none
+    # tray_output none
     modifier $mod
     strip_workspace_numbers yes
     position top
@@ -65,7 +65,7 @@ bar {
 for_window [class="^.*"] border pixel 4
 
 # autostart
-exec_always --no-startup-id feh --bg-fill ~/walls/mounts.jpg
+exec_always --no-startup-id feh --bg-fill ~/walls/pugs.jpg
 exec --no-startup-id dropbox start
 exec --no-startup-id compton --config ~/.config/compton.conf
 # exec --no-startup-id redshift
