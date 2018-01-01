@@ -13,6 +13,9 @@ Plugin 'chriskempson/base16-vim'
 Plugin 'tpope/vim-commentary'
 Plugin 'tommcdo/vim-lion'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'w0rp/ale'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'vimwiki/vimwiki'
 
 
 call vundle#end()
@@ -47,7 +50,7 @@ syntax on
 set smartcase
 
 " macvim font
-set guifont=Monaco:h12
+set guifont=Fira\ Code\ Regular:h16
 
 " instant search
 set incsearch 
@@ -55,6 +58,7 @@ set incsearch
 " show char when line wraps
 set showbreak=↪
 
+"let base16colorspace=256
 colorscheme base16-material-palenight
 
 " **************
@@ -74,3 +78,6 @@ nmap <leader>e :e $MYVIMRC <CR>
 " limit emmet to html/css
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
+
+" add pylint-django to pylint in ale
+let g:ale_python_pylint_options = '--load-plugins pylint_django'
