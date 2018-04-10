@@ -5,11 +5,15 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-surround'
+Plugin 'wellle/targets.vim'
+Plugin 'machakann/vim-sandwich'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'mattn/emmet-vim'
-Plugin 'rust-lang/rust.vim'
-Plugin 'posva/vim-vue'
+Plugin 'chriskempson/base16-vim'
+Plugin 'tpope/vim-commentary'
+Plugin 'tommcdo/vim-lion'
+Plugin 'sheerun/vim-polyglot'
+
 
 call vundle#end()
 filetype plugin indent on
@@ -50,6 +54,8 @@ set incsearch
 
 " show char when line wraps
 set showbreak=↪
+
+colorscheme base16-material-palenight
 
 " **************
 " BINDINGS
