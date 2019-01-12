@@ -1,9 +1,7 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call plug#begin()
-Plug 'VundleVim/Vundle.vim'
+call plug#begin("~/.local/share/JetBrains/nvim/plugged")
 Plug 'scrooloose/nerdtree'
 Plug 'wellle/targets.vim'
 Plug 'machakann/vim-sandwich'
