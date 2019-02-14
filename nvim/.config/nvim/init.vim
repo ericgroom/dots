@@ -1,7 +1,6 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
 call plug#begin()
 Plug 'VundleVim/Vundle.vim'
 Plug 'scrooloose/nerdtree'
@@ -66,7 +65,7 @@ set incsearch
 set showbreak=↪
 
 "let base16colorspace=256
-colorscheme base16-material-palenight
+"colorscheme base16-material-palenight
 
 " **************
 " BINDINGS
