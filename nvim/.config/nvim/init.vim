@@ -1,7 +1,7 @@
 set nocompatible
 filetype off
 
-call plug#begin("~/.local/share/JetBrains/nvim/plugged")
+call plug#begin()
 Plug 'scrooloose/nerdtree'
 Plug 'wellle/targets.vim'
 Plug 'machakann/vim-sandwich'
