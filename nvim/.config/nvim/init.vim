@@ -12,9 +12,18 @@ Plug 'tpope/vim-commentary'
 Plug 'tommcdo/vim-lion'
 Plug 'sheerun/vim-polyglot'
 Plug 'w0rp/ale'
-Plug 'davidhalter/jedi-vim'
 Plug 'vimwiki/vimwiki'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'janko-m/vim-test'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'airblade/vim-gitgutter'
+Plug 'rust-lang/rust.vim'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'junegunn/fzf'
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -63,8 +72,8 @@ set incsearch
 " show char when line wraps
 set showbreak=↪
 
-"let base16colorspace=256
-colorscheme base16-material-palenight
+" let base16colorspace=256
+" colorscheme base16-material-palenight
 
 " **************
 " BINDINGS
@@ -101,3 +110,28 @@ let g:ale_lint_on_insert_leave = 1
 
 "enable deoplete
 let g:deoplete#enable_at_startup = 1
+
+" vim test
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
+let test#strategy = "neovim"
+
+" airline
+let g:airline_theme='minimalist'
+
+" rust vim
+let g:autofmt_autosave = 1
+
+" language client
+set hidden " Required for operations modifying multiple buffers like rename.
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+\ }
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
