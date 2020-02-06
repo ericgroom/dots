@@ -1,2 +1,3 @@
 .vim/
 ./config/
+nvim/.config/nvim/plugged/
