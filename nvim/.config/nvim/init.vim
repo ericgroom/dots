@@ -23,7 +23,8 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -79,10 +80,10 @@ set showbreak=↪
 " BINDINGS
 " **************
 let mapleader = "\<Space>" 
-nmap <leader>f :NERDTree <CR>
+nmap <leader>f :GFiles<CR>
 nmap <leader>w :w <CR>
 nmap <leader>W :wq <CR>
-nmap <Leader>s :source $MYVIMRC <CR>
+nmap <leader>s :source $MYVIMRC <CR>
 nmap <leader>e :e $MYVIMRC <CR>
 nmap <leader>c :nohlsearch <CR>
 nmap <leader>tn :tabnew<CR>
