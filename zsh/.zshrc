@@ -115,6 +115,7 @@ alias zedit="$EDITOR ~/.zshrc"
 # git
 alias gs="git status"
 alias gp="git pull"
+alias gpu="git push -u origin"
 alias gc="git checkout"
 alias gl="git log --oneline"
 alias gcb="git checkout -b"
@@ -126,6 +127,8 @@ alias girb="git rebase -i HEAD~10"
 alias gc="git for-each-ref --format='%(refname:short)' refs/heads | fzf | xargs git checkout"
 alias ga="git ls-files --modified | fzf -m | xargs git add"
 alias gd="git ls-files --modified | fzf | xargs git diff"
+alias gct="git --no-pager tag --list | fzf | xargs git checkout"
+alias gsize="git diff --stat --color master | cat"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/eric.groom/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/eric.groom/Downloads/google-cloud-sdk/path.zsh.inc'; fi
