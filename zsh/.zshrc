@@ -131,10 +131,10 @@ alias gct="git --no-pager tag --list | fzf | xargs git checkout"
 alias gsize="git diff --stat --color master | cat"
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/eric.groom/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/eric.groom/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/eric.groom/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/eric.groom/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/eric.groom/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/eric.groom/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/Users/eric.groom/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/eric.groom/google-cloud-sdk/completion.zsh.inc'; fi
 
 # pyenv
 eval "$(pyenv init -)"
