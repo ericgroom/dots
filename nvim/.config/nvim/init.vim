@@ -25,6 +25,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ }
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-fugitive'
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -81,6 +82,8 @@ set showbreak=↪
 " **************
 let mapleader = "\<Space>" 
 nmap <leader>f :GFiles<CR>
+nmap <leader>F :NERDTree<CR>
+nmap <leader>g :Git<CR>
 nmap <leader>w :w <CR>
 nmap <leader>W :wq <CR>
 nmap <leader>s :source $MYVIMRC <CR>
