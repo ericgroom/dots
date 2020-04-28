@@ -140,9 +140,6 @@ if [ -f '/Users/eric.groom/google-cloud-sdk/completion.zsh.inc' ]; then . '/User
 eval "$(pyenv init -)"
 export PATH="/usr/local/sbin:$PATH"
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
 split_link() {
   ruby -e "print \"vidahealthcoach://features?key=#{ARGV[0]}&status=true&name=#{ARGV[0].split('_').map(&:capitalize).join}&silent=false\"" "$1" | pbcopy
   echo "copied to clipboard!"
@@ -150,3 +147,8 @@ split_link() {
 
 modified_files_interactive() {
    }
+
+# added by travis gem
+[ -f /Users/eric.groom/.travis/travis.sh ] && source /Users/eric.groom/.travis/travis.sh
+
+. /usr/local/opt/asdf/asdf.sh
