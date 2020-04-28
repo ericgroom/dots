@@ -113,6 +113,7 @@ alias zsource="source ~/.zshrc"
 alias zedit="$EDITOR ~/.zshrc"
 
 # git
+alias g="nvim -c 'Git | wincmd o' ."
 alias gs="git status"
 alias gp="git pull"
 alias gpu="git push -u origin"
