@@ -6,19 +6,14 @@ Plug 'scrooloose/nerdtree'
 Plug 'wellle/targets.vim'
 Plug 'machakann/vim-sandwich'
 Plug 'jiangmiao/auto-pairs'
-Plug 'mattn/emmet-vim'
 Plug 'chriskempson/base16-vim'
 Plug 'tpope/vim-commentary'
 Plug 'tommcdo/vim-lion'
 Plug 'sheerun/vim-polyglot'
 Plug 'w0rp/ale'
-Plug 'vimwiki/vimwiki'
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-Plug 'janko-m/vim-test'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
-Plug 'rust-lang/rust.vim'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
@@ -97,16 +92,9 @@ nmap <leader>tl :tabnext<CR>
 " **************
 " PLUGIN OPTIONS
 " **************
-" limit emmet to html/css
-let g:user_emmet_install_global = 0
-autocmd FileType html,css,javascript EmmetInstall
-
 " prettier
 let g:ale_fixers = { 'javascript': ['prettier'], 'css': ['prettier'] }
 let g:ale_fix_on_save = 1
-
-" add pylint-django to pylint in ale
-let g:ale_python_pylint_options = '--load-plugins pylint_django'
 
 " only lint in normal mode
 let g:ale_lint_on_text_changed = 'normal'
@@ -115,19 +103,8 @@ let g:ale_lint_on_insert_leave = 1
 "enable deoplete
 let g:deoplete#enable_at_startup = 1
 
-" vim test
-nmap <silent> t<C-n> :TestNearest<CR>
-nmap <silent> t<C-f> :TestFile<CR>
-nmap <silent> t<C-s> :TestSuite<CR>
-nmap <silent> t<C-l> :TestLast<CR>
-nmap <silent> t<C-g> :TestVisit<CR>
-let test#strategy = "neovim"
-
 " airline
 let g:airline_theme='minimalist'
-
-" rust vim
-let g:autofmt_autosave = 1
 
 " language client
 set hidden " Required for operations modifying multiple buffers like rename.
