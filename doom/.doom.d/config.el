@@ -72,4 +72,4 @@
       )
     )
 
-(setq vterm-module-cmake-args "-DUSE_SYSTEM_LIBVTERM=no")
+;;(setq vterm-module-cmake-args "-DUSE_SYSTEM_LIBVTERM=no") not yet working
