@@ -137,19 +137,9 @@ if [ -f '/Users/eric.groom/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/eric
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/eric.groom/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/eric.groom/google-cloud-sdk/completion.zsh.inc'; fi
 
-# pyenv
-eval "$(pyenv init -)"
-export PATH="/usr/local/sbin:$PATH"
-
 split_link() {
-  ruby -e "print \"vidahealthcoach://features?key=#{ARGV[0]}&status=true&name=#{ARGV[0].split('_').map(&:capitalize).join}&silent=false\"" "$1" | pbcopy
+  ruby -e "puts \"vidahealthcoach://features?key=#{ARGV[0]}\"" "$1" | pbcopy
   echo "copied to clipboard!"
 }
-
-modified_files_interactive() {
-   }
-
-# added by travis gem
-[ -f /Users/eric.groom/.travis/travis.sh ] && source /Users/eric.groom/.travis/travis.sh
 
 . /usr/local/opt/asdf/asdf.sh
