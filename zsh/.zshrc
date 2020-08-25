@@ -102,7 +102,7 @@ fi
 unsetopt beep
 # End of lines configured by zsh-newuser-install
 # export PATH=~/.gem/ruby/2.3.0/bin:$PATH
-export PATH=~/bin/:~/.cargo/bin:$PATH
+export PATH=~/bin/:~/.cargo/bin:~/.emacs.d/bin:$PATH
 
 #aliases
 alias vmain="cd ~/dev/via_ios/"
