@@ -34,7 +34,7 @@ alias zedit="$EDITOR ~/.zshrc"
 # git
 alias g="nvim -c 'Git | wincmd o' ."
 alias gs="git status"
-alias gc="git checkout"
+alias gco="git checkout"
 alias gl="git log --oneline"
 alias gcb="git checkout -b"
 alias gcm="git commit -m"
