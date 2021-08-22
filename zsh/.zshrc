@@ -48,4 +48,4 @@ alias gd="git ls-files --modified | fzf | xargs git diff"
 alias gct="git --no-pager tag --list | fzf | xargs git checkout"
 alias gsize="git diff --stat --color master | cat"
 
-# . /usr/local/opt/asdf/asdf.sh
+. /usr/local/opt/asdf/asdf.sh
