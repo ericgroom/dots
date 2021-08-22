@@ -1,0 +1,4 @@
+will use tag-set configuration
+each machine will have a set of tags enabled
+make simple templating language where you specify blocks for which certain tags are enabled
+but how to handle certain programs? also in the tag config? tags enable programs? hidden file in each program specifying tags?
