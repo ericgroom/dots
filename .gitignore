@@ -2,3 +2,5 @@
 ./config/
 nvim/.config/nvim/plugged/
 nvim/.config/iterm2
+build/
+iam

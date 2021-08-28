@@ -1,0 +1,12 @@
+systems:
+  macmini:
+    programs:
+      - nvim
+      - zsh
+    tags:
+      - test
+
+programs:
+  nvim:
+    stowignore:
+      - plugged
