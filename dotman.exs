@@ -152,7 +152,7 @@ enabled_programs
     end)
 
   files_to_process
-  |> Enum.map(fn file ->
+  |> Enum.each(fn file ->
     contents = File.read!(file)
 
     new_contents =
@@ -168,4 +168,6 @@ enabled_programs
 
     File.write!(file, new_contents)
   end)
+
+  System.cmd("stow", [program, "--no-folding", "--target=#{System.user_home!()}"], cd: "./build")
 end)
