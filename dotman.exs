@@ -108,15 +108,18 @@ defmodule DotMan.TemplateParser do
 end
 
 defmodule DotMan.Env do
-  def config_path, do: "./systems.yaml"
-  def iam_path, do: "./iam"
+  def destination_directory, do: System.user_home!()
+  def root_directory, do: Path.join([System.user_home!(), "dots"])
+  def build_directory, do: Path.join([root_directory(), "build"])
+  def config_path, do: Path.join([root_directory(), "systems.yaml"])
+  def iam_path, do: Path.join([root_directory(), "iam"])
 end
 
 defmodule DotMan.Compiler do
-  alias DotMan.{Config, TemplateParser}
+  alias DotMan.{Config, TemplateParser, Env}
 
   defp ensure_output_dir_exists(program) do
-    File.mkdir_p!(Path.join([".", "build", program]))
+    File.mkdir_p!(Path.join([Env.build_directory(), program]))
   end
 
   def compile_all(config, iam) do
@@ -152,13 +155,14 @@ defmodule DotMan.Compiler do
   end
 
   defp build_destination_for_source_file(path) do
-    Path.join([".", "build", path])
+    relative_to_source = Path.relative_to(path, Env.root_directory())
+    Path.join([Env.build_directory(), relative_to_source])
   end
 
   defp files_to_process(program, config) do
     banned_dirs = Config.stowignore(config, program)
 
-    Path.join([".", program, "**"])
+    Path.join([Env.root_directory(), program, "**"])
     |> Path.wildcard(match_dot: true)
     |> Enum.reject(fn path ->
       Path.split(path)
@@ -185,7 +189,13 @@ defmodule DotMan.Compiler do
   end
 
   defp stow_compiled_program(program) do
-    System.cmd("stow", [program, "--no-folding", "--target=#{System.user_home!()}"], cd: "./build")
+    System.cmd("stow", [program, "--no-folding", "--target=#{Env.destination_directory()}"],
+      cd: Env.build_directory()
+    )
+  end
+
+  def clean_build_folder do
+    File.rm_rf!(Env.build_directory())
   end
 end
 
@@ -225,4 +235,5 @@ alias DotMan.{Compiler, Config, Env}
 iam = File.read!(Env.iam_path())
 config = Config.new(Env.config_path())
 
+Compiler.clean_build_folder()
 Compiler.compile_all(config, iam)
