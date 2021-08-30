@@ -51,4 +51,9 @@ alias gsize="git diff --stat --color master | cat"
 source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 prompt pure
 
+#tags (asdfbrew)
+. /usr/local/opt/asdf/libexec/asdf.sh
+#end
+#tags (asdfgit)
 . $HOME/.asdf/asdf.sh
+#end

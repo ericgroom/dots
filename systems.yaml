@@ -4,7 +4,13 @@ systems:
       - nvim
       - zsh
     tags:
-      - test
+      - asdfgit
+  workmac:
+    programs:
+      - nvim
+      - zsh
+    tags:
+      - asdfbrew
 
 programs:
   nvim:
