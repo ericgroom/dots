@@ -232,7 +232,7 @@ end
 
 alias DotMan.{Compiler, Config, Env}
 
-iam = File.read!(Env.iam_path())
+iam = File.read!(Env.iam_path()) |> String.trim()
 config = Config.new(Env.config_path())
 
 Compiler.clean_build_folder()
