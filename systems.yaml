@@ -11,6 +11,12 @@ systems:
       - zsh
     tags:
       - asdfbrew
+  workmacm1:
+    programs:
+      - nvim
+      - zsh
+    tags:
+      - asdfbrewopt
 
 programs:
   nvim:

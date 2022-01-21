@@ -57,3 +57,6 @@ prompt pure
 #tags (asdfgit)
 . $HOME/.asdf/asdf.sh
 #end
+#tags (asdfbrewopt)
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+#end
