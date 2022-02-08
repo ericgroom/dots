@@ -59,4 +59,5 @@ prompt pure
 #end
 #tags (asdfbrewopt)
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
+export PATH="/opt/homebrew/bin:$PATH"
 #end
