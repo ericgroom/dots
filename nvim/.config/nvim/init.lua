@@ -1,24 +1,41 @@
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+local plugins = {
+  "scrooloose/nerdtree",
+  "wellle/targets.vim",
+  "machakann/vim-sandwich",
+  "jiangmiao/auto-pairs",
+  "chriskempson/base16-vim",
+  "tpope/vim-commentary",
+  "tommcdo/vim-lion",
+  "sheerun/vim-polyglot",
+  "w0rp/ale",
+  "vim-airline/vim-airline",
+  "vim-airline/vim-airline-themes",
+  "airblade/vim-gitgutter",
+  "junegunn/fzf",
+  "junegunn/fzf.vim",
+  "tpope/vim-fugitive",
+}
+
+vim.g.mapleader = " "
+
+require("lazy").setup(plugins, opts)
+
 vim.cmd([[
 set nocompatible
 filetype off
-
-call plug#begin()
-Plug 'scrooloose/nerdtree'
-Plug 'wellle/targets.vim'
-Plug 'machakann/vim-sandwich'
-Plug 'jiangmiao/auto-pairs'
-Plug 'chriskempson/base16-vim'
-Plug 'tpope/vim-commentary'
-Plug 'tommcdo/vim-lion'
-Plug 'sheerun/vim-polyglot'
-Plug 'w0rp/ale'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'airblade/vim-gitgutter'
-Plug 'junegunn/fzf', { 'do': './install --bin' }
-Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-fugitive'
-call plug#end()
 
 filetype plugin indent on
 
@@ -65,7 +82,6 @@ set showbreak=↪
 " **************
 " BINDINGS
 " **************
-let mapleader = "\<Space>" 
 nmap <leader>f :GFiles<CR>
 nmap <leader>F :NERDTree<CR>
 nmap <leader>g :Git<CR>
