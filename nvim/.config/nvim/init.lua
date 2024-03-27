@@ -12,11 +12,21 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
+  {
+    "chriskempson/base16-vim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd([[
+        set termguicolors
+        colorscheme base16-material-palenight
+      ]])
+    end,
+  },
   "scrooloose/nerdtree",
   "wellle/targets.vim",
   "machakann/vim-sandwich",
   "jiangmiao/auto-pairs",
-  "chriskempson/base16-vim",
   "tpope/vim-commentary",
   "tommcdo/vim-lion",
   "sheerun/vim-polyglot",
@@ -75,9 +85,6 @@ set incsearch
 
 " show char when line wraps
 set showbreak=↪
-
-" let base16colorspace=256
-" colorscheme base16-material-palenight
 
 " **************
 " BINDINGS
