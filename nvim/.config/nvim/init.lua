@@ -1,3 +1,4 @@
+vim.cmd([[
 set nocompatible
 filetype off
 
@@ -91,3 +92,4 @@ let g:ale_lint_on_insert_leave = 1
 
 " airline
 let g:airline_theme='minimalist'
+]])
