@@ -64,3 +64,6 @@ prompt pure
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 export PATH="/opt/homebrew/bin:$PATH"
 #end
+
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
