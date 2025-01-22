@@ -17,6 +17,10 @@ systems:
       - zsh
     tags:
       - asdfbrewopt
+  workmacm4:
+    programs:
+      - nvim
+      - fish
 
 programs:
   nvim:
