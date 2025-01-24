@@ -2,3 +2,6 @@
 elixir = "1.18.1-otp-27"
 erlang = "27.2"
 
+[tasks.dotman]
+description = "build and stow config files"
+run = "elixir dotman.exs"
