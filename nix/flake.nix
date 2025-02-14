@@ -12,7 +12,7 @@
   outputs = inputs@{ self, nix-darwin, nixpkgs }:
   let
     configuration = {pkgs, ...}: {
-      services.nix-daemon.enable = true;
+      nix.enable = false;
       nix.settings.experimental-features = "nix-command flakes";
 
       system.configurationRevision = self.rev or self.dirtyRev or null;
