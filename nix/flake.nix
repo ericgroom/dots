@@ -41,6 +41,8 @@
         pkgs.mise
         pkgs.ripgrep
         pkgs.stow
+        pkgs.fish
+        pkgs.fishPlugins.pure
 
         pkgs.iterm2
       ];
