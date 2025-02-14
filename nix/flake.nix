@@ -30,6 +30,47 @@
 
       environment.systemPackages = [ ];
 
+      homebrew = {
+        enable = true;
+        onActivation.cleanup = "uninstall";
+
+        taps = [
+          "homebrew/services"
+        ];
+
+        brews = [
+          "coreutils"
+          "fzf"
+          "git"
+          "gh"
+          "mise"
+          "neovim"
+          "ripgrep"
+          "stow"
+          "tokei"
+          "xcodes"
+
+          "colima"
+          "docker"
+          "docker-buildx"
+          "docker-compose"
+          "postgresql@14"
+          "redis"
+        ];
+
+        casks = [
+          "1password"
+          "elgato-stream-deck"
+          "firefox"
+          "iterm2"
+          "mos"
+          "sf-symbols"
+          "slack"
+          "twobird"
+          "visual-studio-code"
+        ];
+      };
+
       security.pam.enableSudoTouchIdAuth = true;
     };
   in 
