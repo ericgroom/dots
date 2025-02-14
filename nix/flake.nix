@@ -18,6 +18,9 @@
       system.configurationRevision = self.rev or self.dirtyRev or null;
       system.stateVersion = 6;
       nixpkgs.hostPlatform = "aarch64-darwin";
+      nixpkgs.config = {
+        allowUnfree = true;
+      };
 
       users.users.ericgroom = {
         name = "ericgroom";
@@ -28,7 +31,9 @@
       programs.fish.enable = true;
       environment.shells = [ pkgs.fish ];
 
-      environment.systemPackages = [ ];
+      environment.systemPackages = [
+        pkgs.tokei
+      ];
 
       homebrew = {
         enable = true;
@@ -47,7 +52,6 @@
           "neovim"
           "ripgrep"
           "stow"
-          "tokei"
           "xcodes"
 
           "colima"
