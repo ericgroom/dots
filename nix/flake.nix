@@ -7,9 +7,10 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    mac-app-util.url = "github:hraban/mac-app-util";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs }:
+  outputs = inputs@{ self, nix-darwin, mac-app-util, nixpkgs }:
   let
     configuration = {pkgs, ...}: {
       nix.enable = false;
@@ -32,7 +33,16 @@
       environment.shells = [ pkgs.fish ];
 
       environment.systemPackages = [
+        # General
+        pkgs.fzf
+        pkgs.git
+        pkgs.gh
         pkgs.tokei
+        pkgs.mise
+        pkgs.ripgrep
+        pkgs.stow
+
+        pkgs.iterm2
       ];
 
       homebrew = {
@@ -44,14 +54,7 @@
         ];
 
         brews = [
-          "coreutils"
-          "fzf"
-          "git"
-          "gh"
-          "mise"
           "neovim"
-          "ripgrep"
-          "stow"
           "xcodes"
 
           "colima"
@@ -66,7 +69,6 @@
           "1password"
           "elgato-stream-deck"
           "firefox"
-          "iterm2"
           "mos"
           "sf-symbols"
           "slack"
@@ -81,6 +83,7 @@
   {
     darwinConfigurations.egroomm4 = nix-darwin.lib.darwinSystem {
       modules = [
+        mac-app-util.darwinModules.default
         configuration
       ];
     };
