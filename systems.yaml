@@ -1,27 +1,27 @@
 systems:
-  macmini:
+  personalmac:
     programs:
       - nvim
       - zsh
-    tags:
-      - asdfgit
-  workmac:
-    programs:
-      - nvim
-      - zsh
+      - fish
+      - iterm
     tags:
       - asdfbrew
+      - brewusr
   workmacm1:
     programs:
       - nvim
       - zsh
     tags:
       - asdfbrewopt
+      - brewopt
   workmacm4:
     programs:
       - nvim
       - fish
       - docker
+    tags:
+      - brewopt
 
 programs:
   nvim:

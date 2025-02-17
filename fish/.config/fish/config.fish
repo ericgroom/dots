@@ -1,4 +1,9 @@
+#tags (brewopt)
 eval "$(/opt/homebrew/bin/brew shellenv)"
+#end
+#tags (brewusr)
+eval "$(/usr/local/bin/brew shellenv)"
+#end
 eval "$(mise activate fish)"
 fish_add_path ~/bin
 if status is-interactive
