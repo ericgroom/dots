@@ -21,6 +21,7 @@ systems:
     programs:
       - nvim
       - fish
+      - docker
 
 programs:
   nvim:
