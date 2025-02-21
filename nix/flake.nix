@@ -116,6 +116,7 @@
         pkgs.stow
         pkgs.fish
         pkgs.fishPlugins.pure
+        pkgs.nixd
 
         pkgs.iterm2
       ];
