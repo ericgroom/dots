@@ -36,6 +36,7 @@
         # General
         pkgs.fzf
         pkgs.git
+        pkgs.git-standup
         pkgs.gh
         pkgs.tokei
         pkgs.mise
@@ -45,6 +46,7 @@
         pkgs.fishPlugins.pure
 
         pkgs.iterm2
+        pkgs.bruno
       ];
 
       homebrew = {
@@ -59,6 +61,7 @@
           "neovim"
           "xcodes"
 
+          "libyaml" # needed for ruby/bundler
           "colima"
           "docker"
           "docker-buildx"
@@ -68,6 +71,7 @@
         ];
 
         casks = [
+          "leader-key"
           "1password"
           "elgato-stream-deck"
           "firefox"
