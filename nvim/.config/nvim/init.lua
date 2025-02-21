@@ -1,3 +1,9 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+vim.opt.relativenumber = true
+vim.opt.number = true
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({
@@ -53,8 +59,6 @@ local plugins = {
   "tpope/vim-fugitive",
 }
 
-vim.g.mapleader = " "
-
 require("lazy").setup(plugins, opts)
 
 vim.cmd([[
@@ -68,9 +72,6 @@ filetype plugin indent on
 " **************
 " VANILLA OPTIONS
 " **************
-
-set rnu " turns on relative line numbers
-set nu " changes the 0 from rnu to absolute line
 
 " adds kspell to complete which completes dictionary words
 " when spell check is enabled
