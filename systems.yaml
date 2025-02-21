@@ -5,6 +5,7 @@ systems:
       - zsh
       - fish
       - iterm
+      - nvim-kickstart
     tags:
       - asdfbrew
       - brewusr
