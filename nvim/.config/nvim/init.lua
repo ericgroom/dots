@@ -4,6 +4,22 @@ vim.g.maplocalleader = " "
 vim.opt.relativenumber = true
 vim.opt.number = true
 
+-- Don't show the mode, since it's already in the status line
+vim.opt.showmode = false
+
+-- Save undo history
+vim.opt.undofile = true
+
+-- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
+-- Minimal number of screen lines to keep above and below the cursor.
+vim.opt.scrolloff = 5
+
+-- Keep signcolumn on by default
+vim.opt.signcolumn = "yes"
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({
@@ -88,9 +104,6 @@ map Q <Nop>
 
 " syntax 
 syntax on
-
-" only is case-sensitive if an uppercase letter is included
-set smartcase
 
 " instant search
 set incsearch 
