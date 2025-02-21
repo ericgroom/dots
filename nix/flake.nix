@@ -12,7 +12,7 @@
 
   outputs = inputs@{ self, nix-darwin, mac-app-util, nixpkgs }:
   let
-    configuration = {pkgs, ...}: {
+    workConfig = {pkgs, ...}: {
       nix.enable = false;
       nix.settings.experimental-features = "nix-command flakes";
 
@@ -85,12 +85,74 @@
 
       security.pam.enableSudoTouchIdAuth = true;
     };
+    personalConfig = {pkgs, ...}: {
+      nix.enable = false;
+      nix.settings.experimental-features = "nix-command flakes";
+
+      system.configurationRevision = self.rev or self.dirtyRev or null;
+      system.stateVersion = 6;
+      nixpkgs.hostPlatform = "x86_64-darwin";
+      nixpkgs.config = {
+        allowUnfree = true;
+      };
+
+      users.users.ericgroom = {
+        name = "ericgroom";
+        home = "/Users/ericgroom";
+        shell = pkgs.fish;
+      };
+
+      programs.fish.enable = true;
+      environment.shells = [ pkgs.fish ];
+
+      environment.systemPackages = [
+        # General
+        pkgs.fzf
+        pkgs.git
+        pkgs.gh
+        pkgs.tokei
+        pkgs.mise
+        pkgs.ripgrep
+        pkgs.stow
+        pkgs.fish
+        pkgs.fishPlugins.pure
+
+        pkgs.iterm2
+      ];
+
+      homebrew = {
+        enable = true;
+        onActivation.cleanup = "uninstall";
+
+        taps = [
+          "homebrew/services"
+        ];
+
+        brews = [
+          "neovim"
+          "xcodes"
+        ];
+
+        casks = [
+          "1password"
+          "firefox"
+        ];
+      };
+
+      security.pam.enableSudoTouchIdAuth = true;
+    };
   in 
   {
     darwinConfigurations.egroomm4 = nix-darwin.lib.darwinSystem {
       modules = [
         mac-app-util.darwinModules.default
-        configuration
+        workConfig
+      ];
+    };
+    darwinConfigurations.personalmacbook = nix-darwin.lib.darwinSystem {
+      modules = [
+        mac-app-util.darwinModules.default
+        personalConfig
       ];
     };
   };
