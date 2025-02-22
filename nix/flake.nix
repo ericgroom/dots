@@ -42,6 +42,7 @@
         pkgs.fish
         pkgs.fishPlugins.pure
         pkgs.nixd
+        pkgs.wget
 
         pkgs.iterm2
         pkgs._1password
