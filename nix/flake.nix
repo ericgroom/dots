@@ -1,5 +1,5 @@
 {
-  description = "Nix computers' config";
+  description = "Work Mac Config";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -45,7 +45,6 @@
         pkgs.wget
 
         pkgs.iterm2
-        pkgs._1password
       ];
 
       homebrew = {
@@ -62,6 +61,7 @@
 
         casks = [
           "leader-key"
+          "1password"
           "firefox"
           "mos"
         ];
