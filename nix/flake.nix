@@ -2,6 +2,10 @@
   description = "Work Mac Config";
 
   inputs = {
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
@@ -10,7 +14,7 @@
     mac-app-util.url = "github:hraban/mac-app-util";
   };
 
-  outputs = inputs@{ self, nix-darwin, mac-app-util, nixpkgs }:
+  outputs = inputs@{ self, lix-module, nix-darwin, mac-app-util, nixpkgs }:
   let
     shared = {pkgs, ...}: {
       nix.settings.experimental-features = "nix-command flakes";
@@ -43,8 +47,6 @@
         pkgs.fishPlugins.pure
         pkgs.nixd
         pkgs.wget
-
-        pkgs.iterm2
       ];
 
       homebrew = {
@@ -60,6 +62,7 @@
         ];
 
         casks = [
+          "iterm2"
           "leader-key"
           "1password"
           "firefox"
@@ -70,7 +73,6 @@
       security.pam.enableSudoTouchIdAuth = true;
     };
     workConfig = {pkgs, ...}: {
-      nix.enable = false;
       nixpkgs.hostPlatform = "aarch64-darwin";
 
       environment.systemPackages = [
@@ -116,6 +118,7 @@
   {
     darwinConfigurations.egroomm4 = nix-darwin.lib.darwinSystem {
       modules = [
+        lix-module.nixosModules.default
         mac-app-util.darwinModules.default
         shared
         workConfig
