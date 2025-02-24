@@ -21,6 +21,7 @@ systems:
       - nvim
       - fish
       - docker
+      - iterm
     tags:
       - brewopt
 
