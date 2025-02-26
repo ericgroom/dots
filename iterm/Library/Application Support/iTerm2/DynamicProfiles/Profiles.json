@@ -19,7 +19,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0.44313725829124451
   },
-  "Normal Font" : "Monaco 16",
+  "Normal Font" : "SFMonoNF-Regular 16",
   "Bold Color" : {
     "Red Component" : 0.93324452638626099,
     "Color Space" : "sRGB",
@@ -111,7 +111,7 @@
   },
   "Custom Command" : "Custom Shell",
   "ASCII Anti Aliased" : true,
-  "Non Ascii Font" : "Monaco 12",
+  "Non Ascii Font" : "SFMono Nerd Font 16",
   "Vertical Spacing" : 1,
   "Use Bold Font" : true,
   "Option Key Sends" : 0,

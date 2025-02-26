@@ -12,9 +12,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     mac-app-util.url = "github:hraban/mac-app-util";
+    apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
   };
 
-  outputs = inputs@{ self, lix-module, nix-darwin, mac-app-util, nixpkgs }:
+  outputs = inputs@{ self, lix-module, nix-darwin, mac-app-util, apple-fonts, nixpkgs }:
   let
     shared = {pkgs, ...}: {
       nix.settings.experimental-features = "nix-command flakes";
@@ -30,6 +31,8 @@
         home = "/Users/ericgroom";
         shell = pkgs.fish;
       };
+
+      fonts.packages = [ apple-fonts.packages.${pkgs.system}.sf-mono-nerd ];
 
       programs.fish.enable = true;
       environment.shells = [ pkgs.fish ];
