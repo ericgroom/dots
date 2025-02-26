@@ -70,6 +70,7 @@
           "1password"
           "firefox"
           "mos"
+          "private-internet-access"
         ];
       };
 
