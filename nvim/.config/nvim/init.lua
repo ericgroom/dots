@@ -57,6 +57,7 @@ local plugins = {
   },
   {
       "nvim-telescope/telescope.nvim",
+      dependencies = { "nvim-lua/plenary.nvim" },
       keys = {
         { "<leader>f", "<cmd>Telescope git_files<cr>", desc = "Git Files" },
         { "<leader>s", "<cmd>Telescope<cr>", desc = "Telescope"},
