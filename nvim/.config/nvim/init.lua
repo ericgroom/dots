@@ -64,13 +64,6 @@ nmap <leader>c :nohlsearch <CR>
 nmap <leader>tn :tabnew<CR>
 nmap <leader>th :tabprevious<CR>
 nmap <leader>tl :tabnext<CR>
-
-
-" **************
-" PLUGIN OPTIONS
-" **************
-" airline
-let g:airline_theme='minimalist'
 ]])
 
 require("config.lazy")

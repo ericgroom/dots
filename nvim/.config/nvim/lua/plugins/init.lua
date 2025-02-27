@@ -1,17 +1,5 @@
 return {
   {
-    "chriskempson/base16-vim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.cmd([[
-        set termguicolors
-        colorscheme base16-material-palenight
-      ]])
-    end,
-  },
-  "nvim-tree/nvim-web-devicons",
-  {
     "nvim-tree/nvim-tree.lua",
     keys = {
       { "<leader>F", "<cmd>NvimTreeFindFileToggle<cr>", desc = "NvimTree" }
