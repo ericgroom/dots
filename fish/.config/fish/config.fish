@@ -6,6 +6,8 @@ eval "$(/usr/local/bin/brew shellenv)"
 #end
 eval "$(mise activate fish)"
 fish_add_path ~/bin
+set -gx EDITOR nvim
+set -gx GIT_EDITOR nvim
 if status is-interactive
     # Commands to run in interactive sessions can go here
 
