@@ -453,7 +453,10 @@ local plugins = {
 	},
 }
 
-require("lazy").setup(plugins, opts)
+require("lazy").setup({
+  spec = plugins,
+  rocks = { enabled = false },
+})
 
 vim.cmd([[
 set nocompatible
