@@ -200,6 +200,7 @@ return {
   },
   { -- Autocompletion
     "saghen/blink.cmp",
+    version = '*',
     event = "InsertEnter",
     dependencies = {
       -- Snippet Engine & its associated nvim-cmp source
