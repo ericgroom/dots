@@ -142,6 +142,20 @@ return {
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
             end, "[T]oggle Inlay [H]ints")
           end
+
+          local formatting_group = vim.api.nvim_create_augroup("LSPFormatting", {})
+          if client
+              and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_formatting, event.buf)
+          then
+            vim.api.nvim_clear_autocmds({ group = formatting_group, buffer = event.buf })
+            vim.api.nvim_create_autocmd("BufWritePre", {
+              group = formatting_group,
+              buffer = event.buf,
+              callback = function()
+                vim.lsp.buf.format({ id = event.data.client_id })
+              end
+            })
+          end
         end,
       })
 
