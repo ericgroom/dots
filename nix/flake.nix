@@ -75,6 +75,10 @@
       };
 
       security.pam.enableSudoTouchIdAuth = true;
+      
+      system.defaults.finder.CreateDesktop = false;
+      system.defaults.finder.FXPreferredViewStyle = "clmv";
+      system.defaults.finder.NewWindowTarget = "Home";
     };
     workConfig = {pkgs, ...}: {
       nixpkgs.hostPlatform = "aarch64-darwin";
