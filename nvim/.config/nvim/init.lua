@@ -45,11 +45,11 @@ set expandtab
 " disable ex mode, feel free to remap later
 map Q <Nop>
 
-" syntax 
+" syntax
 syntax on
 
 " instant search
-set incsearch 
+set incsearch
 
 " show char when line wraps
 set showbreak=↪
