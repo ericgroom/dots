@@ -40,6 +40,7 @@
       environment.systemPackages = [
         # General
         pkgs.fzf
+        pkgs.fd
         pkgs.git
         pkgs.gh
         pkgs.tokei
