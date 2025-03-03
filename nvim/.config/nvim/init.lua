@@ -20,6 +20,18 @@ vim.opt.scrolloff = 5
 -- Keep signcolumn on by default
 vim.opt.signcolumn = "yes"
 
+local formatting_group = vim.api.nvim_create_augroup("OnSaveFormatting", {})
+vim.api.nvim_create_autocmd("BufWritePre", {
+  group = formatting_group,
+  callback = function()
+    vim.lsp.buf.format({
+      filter = function(c)
+        return c.name ~= "ts_ls"
+      end
+    })
+  end
+})
+
 vim.cmd([[
 set nocompatible
 filetype off

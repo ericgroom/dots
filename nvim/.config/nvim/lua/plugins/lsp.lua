@@ -12,6 +12,19 @@ return {
     },
   },
   {
+    "nvimtools/none-ls.nvim",
+    config = function()
+      local null_ls = require("null-ls")
+      local fix = null_ls.builtins.formatting
+      null_ls.setup({
+        debug = true,
+        sources = {
+          fix.prettier
+        }
+      })
+    end
+  },
+  {
     -- Main LSP Configuration
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -59,22 +72,6 @@ return {
             else
               return client.supports_method(method, { bufnr = bufnr })
             end
-          end
-
-          local client = vim.lsp.get_client_by_id(event.data.client_id)
-
-          local formatting_group = vim.api.nvim_create_augroup("LSPFormatting", {})
-          if client
-              and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_formatting, event.buf)
-          then
-            vim.api.nvim_clear_autocmds({ group = formatting_group, buffer = event.buf })
-            vim.api.nvim_create_autocmd("BufWritePre", {
-              group = formatting_group,
-              buffer = event.buf,
-              callback = function()
-                vim.lsp.buf.format({ id = event.data.client_id })
-              end
-            })
           end
         end,
       })
