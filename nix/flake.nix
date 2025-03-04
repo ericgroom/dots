@@ -108,6 +108,7 @@
           "slack"
           "twobird"
           "visual-studio-code"
+          "db-browser-for-sqlite"
         ];
       };
     };
