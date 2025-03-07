@@ -51,6 +51,7 @@
         pkgs.fishPlugins.pure
         pkgs.nixd
         pkgs.wget
+        pkgs.nodejs
       ];
 
       homebrew = {
@@ -75,7 +76,7 @@
         ];
       };
 
-      security.pam.enableSudoTouchIdAuth = true;
+      security.pam.services.sudo_local.touchIdAuth = true;
       
       system.defaults.finder.CreateDesktop = false;
       system.defaults.finder.FXPreferredViewStyle = "clmv";

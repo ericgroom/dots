@@ -57,9 +57,6 @@ set expandtab
 " disable ex mode, feel free to remap later
 map Q <Nop>
 
-" syntax
-syntax on
-
 " instant search
 set incsearch
 

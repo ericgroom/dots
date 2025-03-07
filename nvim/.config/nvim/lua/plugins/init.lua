@@ -41,7 +41,6 @@ return {
   "jiangmiao/auto-pairs",
   "tpope/vim-commentary",
   "tommcdo/vim-lion",
-  "nvim-treesitter/nvim-treesitter",
   "airblade/vim-gitgutter",
   "tpope/vim-fugitive",
 }
