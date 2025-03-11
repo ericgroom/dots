@@ -20,6 +20,15 @@ vim.opt.scrolloff = 5
 -- Keep signcolumn on by default
 vim.opt.signcolumn = "yes"
 
+open_github = function()
+  local current_word = vim.fn.expand("<cword>")
+  if tonumber(current_word) then
+    vim.cmd("!gh pr view --web " .. current_word)
+  end
+end
+
+vim.keymap.set("n", "<leader>p", open_github, { desc = "Open PR ref in browser" })
+
 local formatting_group = vim.api.nvim_create_augroup("OnSaveFormatting", {})
 vim.api.nvim_create_autocmd("BufWritePre", {
   group = formatting_group,
