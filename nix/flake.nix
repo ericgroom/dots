@@ -49,6 +49,7 @@
         pkgs.stow
         pkgs.fish
         pkgs.fishPlugins.pure
+        pkgs.fish-lsp
         pkgs.nixd
         pkgs.wget
         pkgs.nodejs
