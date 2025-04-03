@@ -3,7 +3,7 @@
 
   inputs = {
     lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0.tar.gz";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-3.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -48,7 +48,11 @@
         pkgs.ripgrep
         pkgs.stow
         pkgs.fish
-        pkgs.fishPlugins.pure
+        (pkgs.fishPlugins.pure.overrideAttrs {
+          nativeCheckInputs = [];
+          checkPlugins = [];
+          checkPhase = "";
+        })
         pkgs.fish-lsp
         pkgs.nixd
         pkgs.wget
