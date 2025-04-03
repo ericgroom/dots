@@ -19,7 +19,9 @@ return {
       null_ls.setup({
         debug = true,
         sources = {
-          fix.prettier
+          fix.prettier.with({
+            filetypes = { "typescript", "javascript" }
+          })
         }
       })
     end
