@@ -97,6 +97,7 @@
       environment.systemPackages = [
         pkgs.git-standup
         pkgs.bruno
+        pkgs.slack
       ];
 
       homebrew = {
@@ -115,7 +116,6 @@
         casks = [
           "elgato-stream-deck"
           "sf-symbols"
-          "slack"
           "twobird"
           "visual-studio-code"
           "db-browser-for-sqlite"
