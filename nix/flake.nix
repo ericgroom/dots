@@ -11,11 +11,15 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     mac-app-util.url = "github:hraban/mac-app-util";
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
   };
 
-  outputs = inputs@{ self, lix-module, nix-darwin, mac-app-util, apple-fonts, nixpkgs }:
+  outputs = inputs@{ self, lix-module, nix-darwin, home-manager, mac-app-util, apple-fonts, nixpkgs }:
   let
     shared = {pkgs, ...}: {
       nix.settings.experimental-features = "nix-command flakes";
@@ -31,6 +35,7 @@
         home = "/Users/ericgroom";
         shell = pkgs.fish;
       };
+      system.primaryUser = "ericgroom";
 
       fonts.packages = [ apple-fonts.packages.${pkgs.system}.sf-mono-nerd ];
 
@@ -90,6 +95,25 @@
       system.defaults.finder.CreateDesktop = false;
       system.defaults.finder.FXPreferredViewStyle = "clmv";
       system.defaults.finder.NewWindowTarget = "Home";
+
+      # Home Manager configuration
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+      home-manager.users.ericgroom = {
+        home.stateVersion = "23.11";
+        
+        # Start with a simple git configuration (email configured manually per system)
+        programs.git = {
+          enable = true;
+          userName = "Eric Groom";
+        };
+
+        # Simple shell aliases as a test
+        home.shellAliases = {
+          ll = "ls -la";
+          grep = "rg";
+        };
+      };
     };
     workConfig = {pkgs, ...}: {
       nixpkgs.hostPlatform = "aarch64-darwin";
@@ -141,6 +165,7 @@
       modules = [
         lix-module.nixosModules.default
         mac-app-util.darwinModules.default
+        home-manager.darwinModules.home-manager
         shared
         workConfig
       ];
@@ -148,6 +173,7 @@
     darwinConfigurations.personalmacbook = nix-darwin.lib.darwinSystem {
       modules = [
         mac-app-util.darwinModules.default
+        home-manager.darwinModules.home-manager
         shared
         personalConfig
       ];
