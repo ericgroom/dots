@@ -2,7 +2,6 @@ systems:
   personalmac:
     programs:
       - nvim
-      - zsh
       - fish
       - iterm
       - nvim-kickstart
@@ -12,7 +11,6 @@ systems:
   workmacm1:
     programs:
       - nvim
-      - zsh
     tags:
       - asdfbrewopt
       - brewopt
