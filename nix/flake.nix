@@ -98,6 +98,7 @@
         pkgs.git-standup
         pkgs.bruno
         pkgs.slack
+        pkgs.claude-code
       ];
 
       homebrew = {
