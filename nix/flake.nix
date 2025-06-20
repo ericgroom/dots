@@ -62,6 +62,7 @@
         pkgs.nixd
         pkgs.wget
         pkgs.nodejs
+        pkgs.xcodes
       ];
 
       homebrew = {
@@ -142,8 +143,6 @@
 
       homebrew = {
         brews = [
-          "xcodes"
-
           "libyaml" # needed for ruby/bundler
           "postgresql@14"
           "redis"
@@ -163,12 +162,6 @@
       nixpkgs.hostPlatform = "x86_64-darwin";
 
       environment.systemPackages = [ ];
-
-      homebrew = {
-        brews = [
-          "xcodes"
-        ];
-      };
     };
   in 
   {
