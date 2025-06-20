@@ -113,6 +113,16 @@
           ll = "ls -la";
           grep = "rg";
         };
+
+        # sym link docker plugins
+        home.file.".docker/cli-plugins/docker-buildx" = {
+          source = "${pkgs.docker-buildx}/bin/docker-buildx";
+          executable = true;
+        };
+        home.file.".docker/cli-plugins/docker-compose" = {
+          source = "${pkgs.docker-compose}/bin/docker-compose";
+          executable = true;
+        };
       };
     };
     workConfig = {pkgs, ...}: {
@@ -123,6 +133,11 @@
         pkgs.bruno
         pkgs.slack
         pkgs.claude-code
+        # Docker
+        pkgs.docker
+        pkgs.docker-buildx
+        pkgs.docker-compose
+        pkgs.colima
       ];
 
       homebrew = {
@@ -130,10 +145,6 @@
           "xcodes"
 
           "libyaml" # needed for ruby/bundler
-          "colima"
-          "docker"
-          "docker-buildx"
-          "docker-compose"
           "postgresql@14"
           "redis"
         ];
