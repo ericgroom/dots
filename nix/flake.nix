@@ -109,10 +109,39 @@
           userName = "Eric Groom";
         };
 
-        # Simple shell aliases as a test
-        home.shellAliases = {
-          ll = "ls -la";
-          grep = "rg";
+        # Fish shell configuration
+        programs.fish = {
+          enable = true;
+          shellInit = ''
+            eval "$(mise activate fish)"
+            fish_add_path ~/bin
+            set -gx EDITOR nvim
+            set -gx GIT_EDITOR nvim
+          '';
+          shellAliases = {
+            # Git aliases
+            g = "nvim -c 'Git | wincmd o' .";
+            gs = "git status";
+            gco = "git checkout";
+            gl = "git log --oneline";
+            gcb = "git checkout -b";
+            gbl = "git branch | cat";
+            gbd = "git branch -d";
+            gc = "git for-each-ref --format='%(refname:short)' refs/heads | fzf | xargs git checkout";
+            gb = "git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'";
+            ga = "git ls-files --modified | fzf -m | xargs git add";
+            gct = "git --no-pager tag --list | fzf | xargs git checkout";
+          };
+          functions = {
+            c = ''
+              set -f dir (fd -t d | fzf)
+              cd $dir
+            '';
+            gsize = ''
+              set -f branch $argv[1]
+              git diff --shortstat --color $branch | cat
+            '';
+          };
         };
 
         # sym link docker plugins
@@ -141,6 +170,14 @@
         pkgs.colima
       ];
 
+      # ARM Mac homebrew setup
+      home-manager.users.ericgroom.programs.fish.shellInit = pkgs.lib.mkBefore ''
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+      '';
+      home-manager.users.ericgroom.programs.fish.shellAliases = pkgs.lib.mkAfter {
+        nota = "cd ~/dev/Notability/";
+      };
+
       homebrew = {
         brews = [
           "libyaml" # needed for ruby/bundler
@@ -157,11 +194,16 @@
         ];
       };
     };
-    personalConfig = {...}: {
+    personalConfig = {pkgs, ...}: {
       nix.enable = false;
       nixpkgs.hostPlatform = "x86_64-darwin";
 
       environment.systemPackages = [ ];
+
+      # Intel Mac homebrew setup
+      home-manager.users.ericgroom.programs.fish.shellInit = pkgs.lib.mkBefore ''
+        eval "$(/usr/local/bin/brew shellenv)"
+      '';
     };
   in 
   {

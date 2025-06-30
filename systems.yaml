@@ -2,26 +2,15 @@ systems:
   personalmac:
     programs:
       - nvim
-      - fish
       - iterm
-      - nvim-kickstart
-    tags:
-      - asdfbrew
-      - brewusr
   workmacm1:
     programs:
       - nvim
-    tags:
-      - asdfbrewopt
-      - brewopt
   workmacm4:
     programs:
       - nvim
-      - fish
       - docker
       - iterm
-    tags:
-      - brewopt
 
 programs:
   nvim:
