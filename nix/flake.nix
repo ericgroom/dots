@@ -46,6 +46,7 @@
         # General
         pkgs.fzf
         pkgs.fd
+        pkgs.nix-search-cli
         pkgs.git
         pkgs.gh
         pkgs.tokei
