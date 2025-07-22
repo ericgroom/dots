@@ -49,6 +49,7 @@
         pkgs.nix-search-cli
         pkgs.git
         pkgs.gh
+        pkgs.jujutsu
         pkgs.tokei
         pkgs.mise
         pkgs.ripgrep
