@@ -65,6 +65,7 @@
         pkgs.wget
         pkgs.nodejs
         pkgs.xcodes
+        pkgs.spotify
       ];
 
       homebrew = {
