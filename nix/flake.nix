@@ -177,9 +177,6 @@
       home-manager.users.ericgroom.programs.fish.shellInit = pkgs.lib.mkBefore ''
         eval "$(/opt/homebrew/bin/brew shellenv)"
       '';
-      home-manager.users.ericgroom.programs.fish.shellAliases = pkgs.lib.mkAfter {
-        nota = "cd ~/dev/Notability/";
-      };
 
       homebrew = {
         brews = [
@@ -191,7 +188,6 @@
         casks = [
           "elgato-stream-deck"
           "sf-symbols"
-          "twobird"
           "visual-studio-code"
           "db-browser-for-sqlite"
         ];
