@@ -66,6 +66,12 @@
         pkgs.nodejs
         pkgs.xcodes
         pkgs.spotify
+
+        # Docker
+        pkgs.docker
+        pkgs.docker-buildx
+        pkgs.docker-compose
+        pkgs.colima
       ];
 
       homebrew = {
@@ -166,11 +172,6 @@
         pkgs.bruno
         pkgs.slack
         pkgs.claude-code
-        # Docker
-        pkgs.docker
-        pkgs.docker-buildx
-        pkgs.docker-compose
-        pkgs.colima
       ];
 
       # ARM Mac homebrew setup
