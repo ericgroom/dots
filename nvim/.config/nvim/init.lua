@@ -84,4 +84,5 @@ nmap <leader>th :tabprevious<CR>
 nmap <leader>tl :tabnext<CR>
 ]])
 
+require("filetypes")
 require("config.lazy")
