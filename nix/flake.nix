@@ -74,10 +74,6 @@
           "homebrew/services"
         ];
 
-        brews = [
-          "neovim"
-        ];
-
         casks = [
           "iterm2"
           "leader-key"
