@@ -57,8 +57,6 @@
           checkPlugins = [];
           checkPhase = "";
         })
-        pkgs.fish-lsp
-        pkgs.nixd
         pkgs.nodejs
         pkgs.xcodes
         pkgs.spotify
