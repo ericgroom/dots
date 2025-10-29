@@ -115,7 +115,7 @@
         # Start with a simple git configuration (email configured manually per system)
         programs.git = {
           enable = true;
-          userName = "Eric Groom";
+          settings.user.name = "Eric Groom";
         };
 
         # Fish shell configuration
