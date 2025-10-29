@@ -224,5 +224,6 @@
         personalConfig
       ];
     };
+    nixosConfigurations.desktop = import ./hosts/desktop inputs;
   };
 }
