@@ -8,7 +8,9 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ../../modules/nvidia.nix
+      ../../modules/common_cli.nix
+      ../../modules/nixos/nvidia.nix
+      ../../modules/nixos/gaming.nix
     ];
 
   # Bootloader.
