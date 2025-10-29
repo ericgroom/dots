@@ -17,5 +17,8 @@
       source = "${pkgs.docker-compose}/bin/docker-compose";
       executable = true;
     };
+    home.file.".docker/config.json" = {
+      source = ../../../docker/.docker/config.json;
+    };
   };
 }
