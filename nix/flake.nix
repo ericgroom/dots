@@ -44,15 +44,12 @@
 
       environment.systemPackages = [
         # General
-        pkgs.fzf
-        pkgs.fd
         pkgs.nix-search-cli
         pkgs.git
         pkgs.gh
         pkgs.jujutsu
         pkgs.tokei
         pkgs.mise
-        pkgs.ripgrep
         pkgs.stow
         pkgs.fish
         (pkgs.fishPlugins.pure.overrideAttrs {
@@ -62,7 +59,6 @@
         })
         pkgs.fish-lsp
         pkgs.nixd
-        pkgs.wget
         pkgs.nodejs
         pkgs.xcodes
         pkgs.spotify
@@ -222,6 +218,7 @@
         home-manager.darwinModules.home-manager
         shared
         personalConfig
+        ./modules/common_cli.nix
       ];
     };
     nixosConfigurations.desktop = import ./hosts/desktop inputs;
