@@ -55,6 +55,7 @@
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
+  services.xserver.xkb.options = "ctrl:nocaps";
 
   # Configure keymap in X11
   services.xserver.xkb = {
