@@ -32,7 +32,6 @@ return {
     dependencies = {
       { "williamboman/mason.nvim", opts = {} },
       "williamboman/mason-lspconfig.nvim",
-      "WhoIsSethDaniel/mason-tool-installer.nvim",
 
       -- Useful status updates for LSP.
       { "j-hui/fidget.nvim",       opts = {} },
@@ -127,26 +126,18 @@ return {
         },
       }
 
-      local servers_to_install = vim.tbl_filter(function(key)
-        local t = servers[key]
-        if type(t) == "table" then
-          return not t.manual_install
-        else
-          return t
-        end
-      end, vim.tbl_keys(servers))
-
+      local servers_to_install = servers
       local ensure_installed = servers_to_install
       vim.list_extend(ensure_installed, {
         "stylua", -- Used to format Lua code
       })
-      require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
-      require("lspconfig").nixd.setup({})
-      require("lspconfig").fish_lsp.setup({})
+      vim.lsp.enable({ "nixd" })
+      vim.lsp.enable({ "fish_lsp" })
+      vim.lsp.enable({ "lua_ls", "stylua" })
 
       require("mason-lspconfig").setup({
-        ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
+        ensure_installed = {}, -- explicitly set to an empty table, installs handled in nix
         automatic_installation = false,
         handlers = {
           function(server_name)
