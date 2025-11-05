@@ -90,6 +90,7 @@
     isNormalUser = true;
     description = "Eric Groom";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.fish;
     packages = with pkgs; [
       kdePackages.kate
     #  thunderbird
@@ -109,6 +110,7 @@
 
 
   programs.git.enable = true;
+  programs.fish.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -118,6 +120,12 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
+    pkgs.fish
+    (pkgs.fishPlugins.pure.overrideAttrs {
+      nativeCheckInputs = [];
+      checkPlugins = [];
+      checkPhase = "";
+    })
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

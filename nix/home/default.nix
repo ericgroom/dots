@@ -8,5 +8,6 @@
     ./modules/shell.nix
     ./modules/git.nix
     ./modules/nvim.nix
+    ./modules/development.nix
   ];
 }

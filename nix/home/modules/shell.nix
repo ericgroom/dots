@@ -1,9 +1,15 @@
 { pkgs, ... }:
 
 {
-# Fish shell configuration
+  # Fish shell configuration
   programs.fish = {
     enable = true;
+    plugins = [
+      {
+        name = "pure";
+        src = pkgs.fishPlugins.pure;
+      }
+    ];
       shellInit = ''
         eval "$(mise activate fish)"
         fish_add_path ~/bin
