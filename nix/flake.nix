@@ -90,36 +90,6 @@
       system.defaults.finder.FXPreferredViewStyle = "clmv";
       system.defaults.finder.NewWindowTarget = "Home";
     };
-    workConfig = {pkgs, ...}: {
-      nixpkgs.hostPlatform = "aarch64-darwin";
-
-      environment.systemPackages = [
-        pkgs.git-standup
-        pkgs.bruno
-        pkgs.slack
-        pkgs.claude-code
-      ];
-
-      # ARM Mac homebrew setup
-      home-manager.users.ericgroom.programs.fish.shellInit = pkgs.lib.mkBefore ''
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-      '';
-
-      homebrew = {
-        brews = [
-          "libyaml" # needed for ruby/bundler
-          "postgresql@14"
-          "redis"
-        ];
-
-        casks = [
-          "elgato-stream-deck"
-          "sf-symbols"
-          "visual-studio-code"
-          "db-browser-for-sqlite"
-        ];
-      };
-    };
     personalConfig = {pkgs, ...}: {
       nix.enable = false;
       nixpkgs.hostPlatform = "x86_64-darwin";
@@ -133,21 +103,6 @@
     };
   in 
   {
-    darwinConfigurations.egroomm4 = nix-darwin.lib.darwinSystem {
-      modules = [
-        lix-module.nixosModules.default
-        mac-app-util.darwinModules.default
-        shared
-        workConfig
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.ericgroom = import ./home;
-        }
-        ./modules/darwin/docker.nix
-      ];
-    };
     darwinConfigurations.personalmacbook = nix-darwin.lib.darwinSystem {
       modules = [
         mac-app-util.darwinModules.default
