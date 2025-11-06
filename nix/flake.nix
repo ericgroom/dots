@@ -19,10 +19,17 @@
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
   };
 
-  outputs = inputs@{ self, lix-module, nix-darwin, home-manager, mac-app-util, apple-fonts, nixpkgs }:
+  outputs = inputs@{ self, nix-darwin, home-manager, mac-app-util, apple-fonts }:
   let
-    shared = {pkgs, ...}: {
+    personalConfig = {pkgs, ...}: {
       nix.settings.experimental-features = "nix-command flakes";
+      nix.enable = false;
+      nixpkgs.hostPlatform = "x86_64-darwin";
+
+      # Intel Mac homebrew setup
+      home-manager.users.ericgroom.programs.fish.shellInit = pkgs.lib.mkBefore ''
+        eval "$(/usr/local/bin/brew shellenv)"
+      '';
 
       system.configurationRevision = self.rev or self.dirtyRev or null;
       system.stateVersion = 6;
@@ -90,23 +97,11 @@
       system.defaults.finder.FXPreferredViewStyle = "clmv";
       system.defaults.finder.NewWindowTarget = "Home";
     };
-    personalConfig = {pkgs, ...}: {
-      nix.enable = false;
-      nixpkgs.hostPlatform = "x86_64-darwin";
-
-      environment.systemPackages = [ ];
-
-      # Intel Mac homebrew setup
-      home-manager.users.ericgroom.programs.fish.shellInit = pkgs.lib.mkBefore ''
-        eval "$(/usr/local/bin/brew shellenv)"
-      '';
-    };
   in 
   {
     darwinConfigurations.personalmacbook = nix-darwin.lib.darwinSystem {
       modules = [
         mac-app-util.darwinModules.default
-        shared
         personalConfig
         home-manager.darwinModules.home-manager
         {
