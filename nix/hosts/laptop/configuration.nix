@@ -31,12 +31,7 @@
   environment.systemPackages = [
     # General
     pkgs.nix-search-cli
-    pkgs.git
-    pkgs.gh
-    pkgs.jujutsu
     pkgs.tokei
-    pkgs.mise
-    pkgs.stow
     pkgs.fish
     (pkgs.fishPlugins.pure.overrideAttrs {
      nativeCheckInputs = [];
