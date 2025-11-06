@@ -9,5 +9,6 @@
     ./modules/git.nix
     ./modules/nvim.nix
     ./modules/development.nix
+    ./modules/ssh.nix
   ];
 }
