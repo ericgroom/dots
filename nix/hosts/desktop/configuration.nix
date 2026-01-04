@@ -115,4 +115,7 @@
     pkgs.fish
     pkgs.fishPlugins.pure
   ];
+
+  home-manager.users.ericgroom.sshShortcuts.enable = true;
+  home-manager.users.ericgroom._1passwordAgentPath = "~/.1password/agent.sock";
 }

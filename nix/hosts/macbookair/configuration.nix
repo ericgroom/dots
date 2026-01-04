@@ -78,5 +78,8 @@
     };
   };
 
+  home-manager.users.ericgroom.sshShortcuts.enable = true;
+  home-manager.users.ericgroom._1passwordAgentPath = "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
+
   iosdev.enable = true;
 }
