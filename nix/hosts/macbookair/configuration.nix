@@ -60,6 +60,11 @@
     ];
   };
 
+  system.keyboard = {
+    enableKeyMapping = true;
+    remapCapsLockToControl = true;
+  };
+
   security.pam.services.sudo_local.touchIdAuth = true;
 
   system.defaults.finder.CreateDesktop = false;
