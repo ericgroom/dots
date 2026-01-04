@@ -3,6 +3,7 @@
 {
   imports = [
     ../../modules/darwin/docker.nix
+    ../../modules/darwin/iosdev.nix
     ../../modules/common_cli.nix
   ];
 
@@ -39,7 +40,6 @@
      checkPhase = "";
      })
     pkgs.nodejs
-    pkgs.xcodes
     pkgs.spotify
   ];
 
@@ -77,4 +77,6 @@
       autohide = true;
     };
   };
+
+  iosdev.enable = true;
 }
