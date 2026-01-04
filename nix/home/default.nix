@@ -9,6 +9,6 @@
     ./modules/git.nix
     ./modules/nvim.nix
     ./modules/development.nix
-    ./modules/ssh.nix
+    # temporarily disabled to get new laptop building ./modules/ssh.nix
   ];
 }
