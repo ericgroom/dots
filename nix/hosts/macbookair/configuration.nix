@@ -67,7 +67,14 @@
 
   security.pam.services.sudo_local.touchIdAuth = true;
 
-  system.defaults.finder.CreateDesktop = false;
-  system.defaults.finder.FXPreferredViewStyle = "clmv";
-  system.defaults.finder.NewWindowTarget = "Home";
+  system.defaults = {
+    finder = {
+      CreateDesktop = false;
+      FXPreferredViewStyle = "clmv";
+      NewWindowTarget = "Home";
+    };
+    dock = {
+      autohide = true;
+    };
+  };
 }
