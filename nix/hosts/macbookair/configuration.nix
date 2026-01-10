@@ -51,6 +51,10 @@
       upgrade = true;
     };
 
+    masApps = {
+      things = 904280696;
+    };
+
     casks = [
       "iterm2"
       "leader-key"
