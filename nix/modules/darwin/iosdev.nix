@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
 
 {
 
@@ -7,8 +7,9 @@
   };
 
   config = lib.mkIf config.iosdev.enable {
-    environment.systemPackages = [
-      pkgs.xcodes
+    homebrew.brews = [
+      "xcodes"
+      "aria2"  # speeds up Xcode downloads
     ];
   };
 }
