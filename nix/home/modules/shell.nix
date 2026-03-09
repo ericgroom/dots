@@ -12,6 +12,7 @@
     ];
       shellInit = ''
         eval "$(mise activate fish)"
+        eval "$(/opt/homebrew/bin/brew shellenv)"
         fish_add_path ~/bin
         set -gx EDITOR nvim
         set -gx GIT_EDITOR nvim

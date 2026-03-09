@@ -39,6 +39,7 @@
      checkPlugins = [];
      checkPhase = "";
      })
+    pkgs.claude-code
     pkgs.nodejs
     pkgs.spotify
   ];
@@ -54,6 +55,10 @@
     masApps = {
       things = 904280696;
     };
+
+    brews = [
+      "postgresql@16"
+    ];
 
     casks = [
       "iterm2"
