@@ -6,7 +6,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Personal dotfiles repository using Nix flakes to manage system configuration across multiple machines:
 - **macbookair**: Apple Silicon Mac (aarch64-darwin) - primary development machine
-- **personalmacbook**: Intel Mac (x86_64-darwin)
 - **desktop**: NixOS gaming/desktop workstation (x86_64-linux)
 
 ## Commands
@@ -16,7 +15,6 @@ All configuration is managed through Nix flakes in the `nix/` directory.
 ```bash
 # Apply configuration on macOS (run from nix/ directory)
 darwin-rebuild switch --flake .#macbookair
-darwin-rebuild switch --flake .#personalmacbook
 
 # Apply configuration on NixOS
 sudo nixos-rebuild switch --flake .#desktop
@@ -32,7 +30,6 @@ nix/
 ├── flake.nix              # Flake entry point - defines all machine outputs
 ├── hosts/                 # Machine-specific configurations
 │   ├── macbookair/        # Apple Silicon Mac config
-│   ├── laptop/            # Intel Mac config
 │   └── desktop/           # NixOS config
 ├── home/                  # Home-manager user configuration
 │   ├── default.nix        # Main home config, imports all modules

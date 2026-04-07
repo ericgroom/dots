@@ -21,7 +21,6 @@
 
   outputs = inputs:
   {
-    darwinConfigurations.personalmacbook = import ./hosts/laptop inputs;
     darwinConfigurations.macbookair = import ./hosts/macbookair inputs;
     nixosConfigurations.desktop = import ./hosts/desktop inputs;
   };
