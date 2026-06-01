@@ -43,6 +43,7 @@
     pkgs.nodejs
     pkgs.spotify
     pkgs._1password-cli
+    pkgs.wireguard-ui
   ];
 
   homebrew = {
@@ -68,6 +69,7 @@
       "firefox"
       "mos"
       "pgadmin4"
+      "discord"
     ];
   };
 
