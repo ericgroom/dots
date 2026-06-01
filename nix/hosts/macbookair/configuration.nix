@@ -67,6 +67,7 @@
       "1password"
       "firefox"
       "mos"
+      "pgadmin4"
     ];
   };
 
