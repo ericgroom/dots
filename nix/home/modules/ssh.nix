@@ -14,7 +14,7 @@
     programs.ssh = {
       enable = true;
       enableDefaultConfig = false;
-      matchBlocks = {
+      settings = {
         "*" = lib.mkIf (config._1passwordAgentPath != null) {
           identityAgent = "\"${config._1passwordAgentPath}\"";
         };
