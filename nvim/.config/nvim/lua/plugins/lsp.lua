@@ -12,21 +12,6 @@ return {
     },
   },
   {
-    "nvimtools/none-ls.nvim",
-    config = function()
-      local null_ls = require("null-ls")
-      local fix = null_ls.builtins.formatting
-      null_ls.setup({
-        debug = true,
-        sources = {
-          fix.prettier.with({
-            filetypes = { "typescript", "javascript" }
-          })
-        }
-      })
-    end
-  },
-  {
     -- Main LSP Configuration
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -143,8 +128,7 @@ return {
           function(server_name)
             local server = servers[server_name] or {}
             -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for ts_ls)
+            -- by the server configuration above.
             server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
             require("lspconfig")[server_name].setup(server)
           end,

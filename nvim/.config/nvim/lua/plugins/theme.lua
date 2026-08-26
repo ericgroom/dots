@@ -14,12 +14,12 @@ return {
     "nvim-tree/nvim-web-devicons",
   },
   {
-    "vim-airline/vim-airline",
-    dependencies = {
-      "vim-airline/vim-airline-themes",
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+      options = {
+        theme = "auto",
+      },
     },
-    config = function()
-      vim.g.airline_theme = "minimalist"
-    end
   },
 }

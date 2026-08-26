@@ -29,18 +29,6 @@ end
 
 vim.keymap.set("n", "<leader>p", open_github, { desc = "Open PR ref in browser" })
 
-local formatting_group = vim.api.nvim_create_augroup("OnSaveFormatting", {})
-vim.api.nvim_create_autocmd("BufWritePre", {
-  group = formatting_group,
-  callback = function()
-    vim.lsp.buf.format({
-      filter = function(c)
-        return c.name ~= "ts_ls"
-      end
-    })
-  end
-})
-
 vim.cmd([[
 set nocompatible
 filetype off
