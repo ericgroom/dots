@@ -16,6 +16,15 @@
   nixpkgs.config = {
     allowUnfree = true;
   };
+  nixpkgs.overlays = [
+    (final: prev: {
+      fishPlugins = prev.fishPlugins // {
+        # pure's test suite assumes a Linux/non-sandboxed environment (/proc,
+        # unrestricted git config, etc.) and fails under the Darwin Nix sandbox.
+        pure = prev.fishPlugins.pure.overrideAttrs (_: { doCheck = false; });
+      };
+    })
+  ];
 
   users.users.ericgroom = {
     name = "ericgroom";
@@ -34,11 +43,7 @@
     pkgs.nix-search-cli
     pkgs.tokei
     pkgs.fish
-    (pkgs.fishPlugins.pure.overrideAttrs {
-     nativeCheckInputs = [];
-     checkPlugins = [];
-     checkPhase = "";
-     })
+    pkgs.fishPlugins.pure
     pkgs.claude-code
     pkgs.nodejs
     pkgs.spotify
