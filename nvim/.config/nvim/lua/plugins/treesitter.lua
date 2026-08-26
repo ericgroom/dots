@@ -3,8 +3,20 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		config = function()
-			local ensure_installed =
-				{ "lua", "vim", "vimdoc", "typescript", "javascript", "nix", "elixir", "swift", "caddy" }
+			local ensure_installed = {
+				"lua",
+				"vim",
+				"vimdoc",
+				"typescript",
+				"javascript",
+				"nix",
+				"elixir",
+				"heex",
+				"eex",
+				"html",
+				"swift",
+				"caddy",
+			}
 			local treesitter = require("nvim-treesitter")
 			treesitter.install(ensure_installed)
 
