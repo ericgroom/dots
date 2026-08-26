@@ -8,6 +8,12 @@ return {
 		opts = {},
 	},
 	{
+		"akinsho/bufferline.nvim",
+		version = "*",
+		dependencies = "nvim-tree/nvim-web-devicons",
+		opts = {},
+	},
+	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
