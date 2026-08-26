@@ -47,6 +47,28 @@ return {
           -- or a suggestion from your LSP for this to activate.
           map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
 
+          -- Jump to the declaration of the word under your cursor.
+          map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+
+          -- Jump to the implementation of the word under your cursor.
+          map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
+
+          -- Jump to the type of the word under your cursor.
+          map("<leader>lt", require("telescope.builtin").lsp_type_definitions, "[L]SP [T]ype Definition")
+
+          -- Fuzzy find all the symbols in your current document.
+          map("<leader>ld", require("telescope.builtin").lsp_document_symbols, "[L]SP [D]ocument Symbols")
+
+          -- Fuzzy find all the symbols in your current workspace.
+          map("<leader>lw", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[L]SP [W]orkspace Symbols")
+
+          -- Show the diagnostic under the cursor in a floating window.
+          map("<leader>e", vim.diagnostic.open_float, "Show Diagnostic [E]rror")
+
+          -- Jump between diagnostics.
+          map("[d", function() vim.diagnostic.jump({ count = -1, float = true }) end, "Previous Diagnostic")
+          map("]d", function() vim.diagnostic.jump({ count = 1, float = true }) end, "Next Diagnostic")
+
           -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
           ---@param client vim.lsp.Client
           ---@param method vim.lsp.protocol.Method
@@ -58,6 +80,42 @@ return {
             else
               return client.supports_method(method, { bufnr = bufnr })
             end
+          end
+
+          local client = vim.lsp.get_client_by_id(event.data.client_id)
+
+          -- Highlight references of the word under your cursor when idle, clear when the cursor moves.
+          if
+              client
+              and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf)
+          then
+            local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
+            vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+              buffer = event.buf,
+              group = highlight_augroup,
+              callback = vim.lsp.buf.document_highlight,
+            })
+
+            vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+              buffer = event.buf,
+              group = highlight_augroup,
+              callback = vim.lsp.buf.clear_references,
+            })
+
+            vim.api.nvim_create_autocmd("LspDetach", {
+              group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
+              callback = function(event2)
+                vim.lsp.buf.clear_references()
+                vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = event2.buf })
+              end,
+            })
+          end
+
+          -- Toggle inlay hints for the buffer, if the server supports them.
+          if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+            map("<leader>ih", function()
+              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }), { bufnr = event.buf })
+            end, "Toggle [I]nlay [H]ints")
           end
         end,
       })
@@ -111,15 +169,9 @@ return {
         },
       }
 
-      local servers_to_install = servers
-      local ensure_installed = servers_to_install
-      vim.list_extend(ensure_installed, {
-        "stylua", -- Used to format Lua code
-      })
-
       vim.lsp.enable({ "nixd" })
       vim.lsp.enable({ "fish_lsp" })
-      vim.lsp.enable({ "lua_ls", "stylua" })
+      vim.lsp.enable({ "lua_ls" })
 
       require("mason-lspconfig").setup({
         ensure_installed = {}, -- explicitly set to an empty table, installs handled in nix
@@ -141,35 +193,20 @@ return {
     version = '*',
     event = "InsertEnter",
     dependencies = {
-      -- Snippet Engine & its associated nvim-cmp source
-      {
-        "L3MON4D3/LuaSnip",
-        build = (function()
-          -- Build Step is needed for regex support in snippets.
-          -- This step is not supported in many windows environments.
-          -- Remove the below condition to re-enable on windows.
-          if vim.fn.has("win32") == 1 or vim.fn.executable("make") == 0 then
-            return
-          end
-          return "make install_jsregexp"
-        end)(),
-        dependencies = {
-          -- `friendly-snippets` contains a variety of premade snippets.
-          --    See the README about individual language/framework/plugin snippets:
-          --    https://github.com/rafamadriz/friendly-snippets
-          {
-            'rafamadriz/friendly-snippets',
-            config = function()
-              require('luasnip.loaders.from_vscode').lazy_load()
-            end,
-          },
-        },
-      },
+      -- `friendly-snippets` contains a variety of premade snippets.
+      -- blink.cmp's built-in snippet engine loads these directly, no
+      -- separate snippet plugin/loader needed.
+      "rafamadriz/friendly-snippets",
     },
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
-      keymap = { preset = "default" }
+      keymap = { preset = "default" },
+      completion = {
+        ghost_text = { enabled = true },
+      },
+      signature = { enabled = true },
+      cmdline = { enabled = true },
     },
   },
 }

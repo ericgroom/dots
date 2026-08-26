@@ -18,7 +18,9 @@ return {
         lsp_format = "fallback",
         timeout_ms = 1000,
       },
-      formatters_by_ft = {},
+      formatters_by_ft = {
+        lua = { "stylua" },
+      },
     },
   },
 }
