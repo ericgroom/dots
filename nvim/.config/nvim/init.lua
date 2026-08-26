@@ -29,6 +29,21 @@ end
 
 vim.keymap.set("n", "<leader>p", open_github, { desc = "Open PR ref in browser" })
 
+open_jjui = function()
+  vim.cmd("split")
+  vim.cmd("terminal jjui")
+  vim.cmd("startinsert")
+  vim.api.nvim_create_autocmd("TermClose", {
+    buffer = vim.api.nvim_get_current_buf(),
+    once = true,
+    callback = function()
+      vim.cmd("close")
+    end,
+  })
+end
+
+vim.keymap.set("n", "<leader>j", open_jjui, { desc = "Open jjui" })
+
 vim.cmd([[
 set nocompatible
 filetype off
@@ -66,7 +81,7 @@ set showbreak=↪
 nmap <leader>g :Git<CR>
 nmap <leader>w :w <CR>
 nmap <leader>W :wq <CR>
-nmap <leader>c :nohlsearch <CR>
+nmap <leader>/ :nohlsearch <CR>
 nmap <leader>tn :tabnew<CR>
 nmap <leader>th :tabprevious<CR>
 nmap <leader>tl :tabnext<CR>
