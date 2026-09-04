@@ -61,6 +61,11 @@
 
     masApps = {
       things = 904280696;
+      daisyDisk = 411643860;
+      developer = 640199958;
+      wireguard = 1451685025;
+      numbers = 361304891;
+      pages = 361309726;
     };
 
     brews = [
