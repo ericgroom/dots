@@ -49,6 +49,7 @@
     pkgs.spotify
     pkgs._1password-cli
     pkgs.wireguard-ui
+    pkgs.mole-cleaner
   ];
 
   homebrew = {
@@ -80,6 +81,7 @@
       "mos"
       "pgadmin4"
       "discord"
+      "vorssaint"
     ];
   };
 
