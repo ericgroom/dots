@@ -111,9 +111,10 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = [
     pkgs.fish
     pkgs.fishPlugins.pure
+    pkgs.steam-run
   ];
 
   home-manager.users.ericgroom.sshShortcuts.enable = true;
