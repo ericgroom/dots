@@ -78,7 +78,6 @@
       "leader-key"
       "1password"
       "firefox"
-      "mos"
       "pgadmin4"
       "discord"
       "vorssaint"
