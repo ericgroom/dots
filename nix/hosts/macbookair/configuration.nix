@@ -44,7 +44,6 @@
     pkgs.tokei
     pkgs.fish
     pkgs.fishPlugins.pure
-    pkgs.claude-code
     pkgs.nodejs
     pkgs.spotify
     pkgs._1password-cli
