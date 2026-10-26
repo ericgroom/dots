@@ -44,6 +44,15 @@ end
 
 vim.keymap.set("n", "<leader>j", open_jjui, { desc = "Open jjui" })
 
+-- called by jjui (via --remote-expr) to open a file in the window above its split
+jjui_open = function(path)
+  vim.schedule(function()
+    vim.cmd("wincmd p")
+    vim.cmd("edit " .. vim.fn.fnameescape(path))
+  end)
+  return ""
+end
+
 vim.cmd([[
 set nocompatible
 filetype off
