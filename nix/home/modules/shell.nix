@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   # Fish shell configuration
@@ -12,7 +12,9 @@
     ];
       shellInit = ''
         eval "$(mise activate fish)"
+      '' + lib.optionalString pkgs.stdenv.hostPlatform.isDarwin ''
         eval "$(/opt/homebrew/bin/brew shellenv)"
+      '' + ''
         fish_add_path ~/bin
         set -gx EDITOR nvim
         set -gx GIT_EDITOR nvim
